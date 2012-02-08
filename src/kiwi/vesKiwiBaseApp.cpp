@@ -70,7 +70,7 @@ vesKiwiBaseApp::~vesKiwiBaseApp()
 }
 
 //----------------------------------------------------------------------------
-std::tr1::shared_ptr<vesCamera> vesKiwiBaseApp::camera() const
+vesSharedPtr<vesCamera> vesKiwiBaseApp::camera() const
 {
   assert(this->Internal->Renderer);
   return this->Internal->Renderer->camera();
@@ -131,7 +131,7 @@ void vesKiwiBaseApp::handleTwoTouchPanGesture(double x0, double y0, double x1, d
 {
   // calculate the focal depth so we'll know how far to move
   vesSharedPtr<vesRenderer> ren = this->Internal->Renderer;
-  std::tr1::shared_ptr<vesCamera> camera = ren->camera();
+  vesSharedPtr<vesCamera> camera = ren->camera();
   vesVector3f viewFocus = camera->focalPoint();
   vesVector3f viewPoint = camera->position();
   vesVector3f viewFocusDisplay = ren->computeWorldToDisplay(viewFocus);
@@ -156,7 +156,7 @@ void vesKiwiBaseApp::handleSingleTouchPanGesture(double deltaX, double deltaY)
   // Based on vtkInteractionStyleTrackballCamera::Rotate().
   //
   vesSharedPtr<vesRenderer> ren = this->Internal->Renderer;
-  std::tr1::shared_ptr<vesCamera> camera = ren->camera();
+  vesSharedPtr<vesCamera> camera = ren->camera();
 
   double delta_elevation = -20.0 / ren->height();
   double delta_azimuth   = -20.0 / ren->width();
@@ -198,7 +198,7 @@ void vesKiwiBaseApp::handleTwoTouchPinchGesture(double scale)
 //----------------------------------------------------------------------------
 void vesKiwiBaseApp::handleTwoTouchRotationGesture(double rotation)
 {
-  std::tr1::shared_ptr<vesCamera> camera = this->Internal->Renderer->camera();
+  vesSharedPtr<vesCamera> camera = this->Internal->Renderer->camera();
   camera->roll(rotation * 180.0 / M_PI);
   camera->orthogonalizeViewUp();
 }
