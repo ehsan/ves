@@ -22,9 +22,21 @@
 #define VESSHAREDPTR_H
 
 // C/C++ includes
+#if EMSCRIPTEN
+
+// Emscripten ships with a C++0x standard library
+#include <memory>
+
+#define vesSharedPtr std::shared_ptr
+#define vesWeakPtr std::weak_ptr
+
+#else
+
 #include <tr1/memory>
 
 #define vesSharedPtr std::tr1::shared_ptr
 #define vesWeakPtr std::tr1::weak_ptr
+
+#endif
 
 #endif // VESSHAREDPTR_H
