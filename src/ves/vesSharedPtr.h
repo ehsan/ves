@@ -29,6 +29,7 @@
 
 #define vesSharedPtr std::shared_ptr
 #define vesWeakPtr std::weak_ptr
+#define static_pointer_cast std::static_pointer_cast
 
 #else
 
@@ -36,6 +37,7 @@
 
 #define vesSharedPtr std::tr1::shared_ptr
 #define vesWeakPtr std::tr1::weak_ptr
+#define static_pointer_cast std::tr1::static_pointer_cast
 
 #endif
 
