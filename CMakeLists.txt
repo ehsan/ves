@@ -7,6 +7,8 @@ endif()
 
 project(VES)
 
+include(CMakeDetermineSystem)
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake/Modules")
 
 # set project variables
